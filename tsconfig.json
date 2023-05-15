@@ -2,7 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@config": ["config"]
+      "@config": ["config"],
+      "@sagas": ["sagas"],
+      "@store": ["store"],
+
+      "@config/*": ["config/*"],
+      "@sagas/*": ["sagas/*"],
+      "@store/*": ["store/*"],
+      "@utils/*": ["utils/*"]
     },
     "target": "ESNext",
     "useDefineForClassFields": true,
