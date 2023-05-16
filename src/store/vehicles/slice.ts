@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { FetchVehiclesSuccessAction } from './actions';
 
 export type VehiclesData = {
   id: number;
@@ -23,8 +24,9 @@ export const vehiclesSlice = createSlice({
   name: 'vehicles',
   initialState,
   reducers: {
-    fetchVehiclesSuccess: (state, { payload }: PayloadAction<VehiclesData>) => {
-      console.log(payload);
+    fetchVehiclesSuccess: (state, { payload }: PayloadAction<FetchVehiclesSuccessAction>) => {
+      const { data } = payload;
+      console.log(data);
     },
   },
 });

@@ -1,12 +1,12 @@
-import { all, call, put, SagaReturnType, takeLatest } from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 import { getVehicles } from './api/vehicles';
-import { Saga } from '@sagas/types';
+import { fetchVehiclesRequest, fetchVehiclesSuccess } from '@store/vehicles/actions';
 
 const fetchVehiclesRequestHandler = function* () {
   try {
-    const vehiclesData = yield call(getVehicles);
+    const vehiclesData: ReturnType<typeof getVehicles> = yield call(getVehicles);
 
-    // yield put(fetchObjectCostEstimatesSuccess({ data: objectCostEstimate }));
+    yield put(fetchVehiclesSuccess({ data: vehiclesData }));
   } catch (e) {
     console.error(e);
   }

@@ -3,10 +3,12 @@
     "baseUrl": "./src",
     "paths": {
       "@config": ["config"],
+      "@hooks": ["hooks"],
       "@sagas": ["sagas"],
       "@store": ["store"],
 
       "@config/*": ["config/*"],
+      "@hooks/*": ["hooks/*"],
       "@sagas/*": ["sagas/*"],
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"]
