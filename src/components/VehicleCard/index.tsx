@@ -46,6 +46,11 @@ export const VehicleCard: FC<VehicleCardProps> = ({ vehicles, onEdit, onDelete }
 
     onEdit({ id, fieldName, content });
   };
+  const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === 'Enter') {
+      handleInputBlur();
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -68,6 +73,7 @@ export const VehicleCard: FC<VehicleCardProps> = ({ vehicles, onEdit, onDelete }
                     <Input
                       value={content}
                       onChange={handleInputChange}
+                      onKeyDown={handleInputKeyDown}
                       onBlur={handleInputBlur}
                       autoFocus
                     />
