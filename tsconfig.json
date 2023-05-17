@@ -2,11 +2,17 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "@components": ["components"],
       "@config": ["config"],
+      "@constants": ["constants"],
+      "@hooks": ["hooks"],
       "@sagas": ["sagas"],
       "@store": ["store"],
 
+      "@components/*": ["components/*"],
       "@config/*": ["config/*"],
+      "@constants/*": ["constants/*"],
+      "@hooks/*": ["hooks/*"],
       "@sagas/*": ["sagas/*"],
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"]
