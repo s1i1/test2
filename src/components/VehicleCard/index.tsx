@@ -5,14 +5,10 @@ import styles from './styles.module.scss';
 
 export type VehicleCardProps = {
   vehicles: VehiclesData[];
-  onEdit: (id: number, fieldName: string, content: string | number) => void;
+  onDelete: (id: number) => void;
 };
 
-type VehicleFields = { title: string; fieldName: keyof VehiclesData };
-
-type EditableFields = { id: number; fieldName: string };
-
-export const VehicleCard: FC<VehicleCardProps> = ({ vehicles, onEdit }) => {
+export const VehicleCard: FC<VehicleCardProps> = ({ vehicles, onEdit, onDelete }) => {
   const vehicleFields: VehicleFields[] = [
     { title: 'Color', fieldName: 'color' },
     { title: 'Model', fieldName: 'model' },
@@ -77,6 +73,7 @@ export const VehicleCard: FC<VehicleCardProps> = ({ vehicles, onEdit }) => {
                 </Card>
               );
             })}
+            <CloseOutlined className={styles.delete__button} onClick={() => onDelete(vehicle.id)} />
           </div>
         </Card>
       ))}
