@@ -1,10 +1,14 @@
 import React, { FC, useState } from 'react';
-import { VehiclesData } from '@store/vehicles/slice';
+import { EditVehicle, VehiclesData } from '@store/vehicles/slice';
 import { Card, Input } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 import styles from './styles.module.scss';
+
+type VehicleFields = { title: string; fieldName: keyof VehiclesData };
 
 export type VehicleCardProps = {
   vehicles: VehiclesData[];
+  onEdit: ({ id, fieldName, content }: EditVehicle) => void;
   onDelete: (id: number) => void;
 };
 
@@ -17,7 +21,7 @@ export const VehicleCard: FC<VehicleCardProps> = ({ vehicles, onEdit, onDelete }
   ];
 
   const [isContentEditable, setContentEditable] = useState(false);
-  const [editableField, setEditableField] = useState<EditableFields>();
+  const [editableField, setEditableField] = useState<EditVehicle>();
   const [content, setContent] = useState<string | number>('');
 
   const handleClickInnerField = (
@@ -40,7 +44,7 @@ export const VehicleCard: FC<VehicleCardProps> = ({ vehicles, onEdit, onDelete }
 
     const { id, fieldName } = editableField;
 
-    onEdit(id, fieldName, content);
+    onEdit({ id, fieldName, content });
   };
 
   return (

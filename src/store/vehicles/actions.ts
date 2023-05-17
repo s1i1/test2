@@ -7,4 +7,5 @@ export type FetchVehiclesSuccessAction = {
 
 export const fetchVehiclesRequest = createAction('vehicles/fetchVehiclesRequest');
 
-export const { fetchVehiclesSuccess } = vehiclesSlice.actions;
+export const { fetchVehiclesSuccess, setDeleteVehicle, setSortVehicle, setEditVehicle } =
+  vehiclesSlice.actions;
