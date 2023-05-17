@@ -17,14 +17,25 @@ const App = () => {
 
   const sortCallback = AVAILABLE_SORTS[selectedSort];
 
+  const handleChangeSelect = (value: string) => {
+    setSelectedSort(value);
+  };
+
+  const handleEditVehicle = (id: number, fieldName: string, content: string | number) => {
+    setSortedVehicles((prev) =>
+      prev.map((vehicle) => {
+        if (vehicle.id === id) {
+          return { ...vehicle, ...{ [fieldName]: content } };
+        }
+        return vehicle;
+      }),
+    );
+  };
+
   useEffect(() => {
     if (!selectedSort) return;
     setSortedVehicles((prev) => [...prev.sort(sortCallback)]);
-  }, [selectedSort, sortCallback]);
-
-  const handleChange = (value: string) => {
-    setSelectedSort(value);
-  };
+  }, [selectedSort, sortCallback, handleEditVehicle]);
 
   useEffect(() => {
     dispatch(fetchVehiclesRequest());
@@ -33,8 +44,8 @@ const App = () => {
 
   return (
     <>
-      <VehicleSort onChange={handleChange} />
-      <VehicleCard vehicles={sortedVehicles} />
+      <VehicleSort onChange={handleChangeSelect} />
+      <VehicleCard vehicles={sortedVehicles} onEdit={handleEditVehicle} />
     </>
   );
 };
