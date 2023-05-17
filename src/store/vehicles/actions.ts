@@ -1,9 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
-import { getVehicles } from '@sagas/api/vehicles';
-import { vehiclesSlice } from '@store/vehicles/slice';
+import { VehiclesData, vehiclesSlice } from '@store/vehicles/slice';
 
 export type FetchVehiclesSuccessAction = {
-  data: ReturnType<typeof getVehicles>;
+  data: VehiclesData[];
 };
 
 export const fetchVehiclesRequest = createAction('vehicles/fetchVehiclesRequest');

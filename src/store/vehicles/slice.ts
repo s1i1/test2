@@ -13,7 +13,7 @@ export type VehiclesData = {
 };
 
 export type VehiclesState = {
-  vehiclesData: VehiclesData | [];
+  vehiclesData: VehiclesData[];
 };
 
 const initialState: VehiclesState = {
@@ -26,7 +26,7 @@ export const vehiclesSlice = createSlice({
   reducers: {
     fetchVehiclesSuccess: (state, { payload }: PayloadAction<FetchVehiclesSuccessAction>) => {
       const { data } = payload;
-      console.log(data);
+      state.vehiclesData = data;
     },
   },
 });
